@@ -19,12 +19,15 @@ myConfigFile = 'data_mail.config'
 config = RawConfigParser()
 config.read(myConfigFile)
 
+headers = {
+    'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_4) AppleWebKit/536.30.1 (KHTML, like Gecko) Version/6.0.5 Safari/536.30.1'
+}
 
 ##
 # Get the data to send
 ##
 try:
-	r = requests.get(config[data_name]['data_url'])
+	r = requests.get(config[data_name]['data_url'], headers=headers)
 except KeyError:
 	parser.print_usage()
 	print(f"Error: section {data_name} does not exist")
