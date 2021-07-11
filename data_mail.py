@@ -42,7 +42,11 @@ if r.status_code != 200:
 else:
 	m = re.search(config[data_name]['data_regex'], r.text)
 	if m:
-		message = m.group(1)
+		try:
+			message = m.group(1)
+		except IndexError:
+			print(f"Error: Regex must contain 1 group ()")
+			sys.exit()
 	else:
 		message = 'NO DATA IN PAGE'
 		sendMail = True
