@@ -49,7 +49,6 @@ else:
 			sys.exit()
 	else:
 		message = 'NO DATA IN PAGE'
-		sendMail = True
 
 if not config.has_option(data_name, "last_value"):
 	sendMail = True
